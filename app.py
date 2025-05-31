@@ -130,6 +130,10 @@ def upload_file():
 
 
 ####################### GNSS ############################
+@app.route('/GNSS/getlistdb', methods = ['GET'])
+def getlistdb():
+    return jsonify({'success': json.load(open(os.path.join(app.config['database'], 'listuploadsdb.json'),'r'))})
+    
 @app.route('/GNSS/listdbfile', methods = ['GET', 'POST'])
 def GNSSlistdbfile():
     if request.method == 'GET':
